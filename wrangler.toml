@@ -1,0 +1,9 @@
+name = "trojanzek"
+main = "build/worker/shim.mjs"
+compatibility_date = "2025-01-10"
+
+[build]
+command = "cargo install -q worker-build && worker-build --release"
+
+[vars]
+BUFSIZE = "4096"

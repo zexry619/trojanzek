@@ -1,0 +1,35 @@
+{
+  "inbounds": [
+    {
+      "listen": "0.0.0.0",
+      "port": "1080",
+      "protocol": "http"
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "{cloudflare-worker-domain}", 
+            "port": 443,
+            "password": "password"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "wsSettings": {
+          "path": "/tj" // cf not support early data header.
+        },
+        "security": "tls",
+        "tlsSettings": {
+          "allowInsecure": true,
+          "serverName": "{cloudflare-worker-domain}",
+          "fingerprint": "chrome"
+        }
+      }
+    }
+  ]
+}
